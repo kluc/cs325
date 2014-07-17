@@ -2,7 +2,7 @@ import time
 import getopt
 import sys
 
-list = [0, 43, 43, 5 ,6 ,7, 7,90]
+list = range(1000,0,-1)
 
 
 def main(argv):
@@ -18,6 +18,8 @@ def main(argv):
 		elif opt == "-p" and arg == '2':
 			p2()
 			
+
+
 			
 			
 def p1():
@@ -37,12 +39,12 @@ def p1():
 def p2():
 	print "Mergesort"
 	print list
-	mergesort(list)
-
+	print mergesort(list)
+	
 def mergesort(a):
 	if len(a) > 1:
 		mid = len(a) / 2
-		print merge(mergesort(a[0:mid]), mergesort(a[mid + 1:]))
+		return merge(mergesort(a[0:mid]), mergesort(a[mid:]))
 	else:
 		return a
 	
@@ -50,10 +52,10 @@ def mergesort(a):
 def merge(x, y):
 	if len(x) == 0:
 		return y
-	if len(y) == 0:
+	elif len(y) == 0:
 		return x
 	
-	if x[0] <= y[0]:
+	elif x[0] <= y[0]:
 		temp = [x[0]]
 		#return merge(x[1:], y).insert(0, x[0])
 		return temp + merge(x[1:], y)
@@ -62,6 +64,8 @@ def merge(x, y):
 		temp = [y[0]]
 		return temp + merge(x, y[1:])
 		#return merge(x, y[1:]).insert(0, y[0])
+
+
 	
 	
 if __name__ == "__main__":
